@@ -1,4 +1,4 @@
-package application;
+package pl.gosia;
 
 public class TicTacToeModel {
 

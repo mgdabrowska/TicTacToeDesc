@@ -1,4 +1,4 @@
-package application;
+package pl.gosia;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -8,20 +8,17 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
-
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("/application/TicTacToe.fxml"));
-		//	Parent root = FXMLLoader.load(getClass().getResource("/application/TicTacToe.fxml"));
-			//BorderPane root = new BorderPane();
-			Scene scene = new Scene(root,600,600);
+			AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("/pl/gosia/TicTacToe.fxml"));
+			Scene scene = new Scene(root, 600, 600);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
-			 primaryStage.setResizable(false);
+			primaryStage.setResizable(false);
 			primaryStage.show();
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
