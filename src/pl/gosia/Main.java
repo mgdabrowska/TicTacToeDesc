@@ -9,34 +9,45 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.AnchorPane;
 
-
-
 public class Main extends Application {
+
+	private static final String Title = "Please enter your name:";
+	private static final String Header = "Choose player";
+	private static final String Content = "Text Input Dialog";
+	public String nazwa = "Gosia";
+
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			TextInputDialog dialog = new TextInputDialog("Gosia");
-			dialog.setTitle("Text Input Dialog");
-			dialog.setHeaderText("Choose player");
-			dialog.setContentText("Please enter your name:");
-
-			// Traditional way to get the response value.
-			Optional<String> result = dialog.showAndWait();
-			if (result.isPresent()){
-				result.ifPresent(name -> System.out.println("Your name: " + name));
-			
 			AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("/pl/gosia/TicTacToe.fxml"));
-			Scene scene = new Scene(root, 600, 600);
+			Scene scene = new Scene(root, 600, 700);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setResizable(false);
 			primaryStage.show();
-			}else{
-				
-			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public String createPopup(Stage primaryStage) {
+
+		try {
+			TextInputDialog dialog = new TextInputDialog("Gosia");
+
+			dialog.setTitle(Title);
+			dialog.setHeaderText(Header);
+			dialog.setContentText(Content);
+			Optional<String> result = dialog.showAndWait();
+			if (result.isPresent())
+				nazwa = result.get();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return nazwa;
 	}
 
 	public static void main(String[] args) {
