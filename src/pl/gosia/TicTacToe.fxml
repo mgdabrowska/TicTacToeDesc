@@ -28,7 +28,7 @@
                   <Font name="Arial Bold Italic" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="namePlayer" layoutX="207.0" layoutY="603.0" prefHeight="34.0" prefWidth="357.0" text="gupi">
+            <Label fx:id="namePlayer" layoutX="207.0" layoutY="603.0" prefHeight="34.0" prefWidth="357.0">
                <font>
                   <Font name="Arial Bold Italic" size="14.0" />
                </font>

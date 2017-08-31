@@ -1,7 +1,9 @@
-package pl.gosia;
+package pl.gosia.TicTacToeMaven;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import org.apache.log4j.Logger;
 
 //import org.apache.log4j.BasicConfigurator;
 
@@ -15,7 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
-import pl.gosia.Mark;
+import pl.gosia.TicTacToeMaven.Mark;
 
 public class TicTacToeController implements Initializable {
 
@@ -31,7 +33,6 @@ public class TicTacToeController implements Initializable {
 
 	private SolutionChecker logic = new Logic();
 
-	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		Main majority = new Main();
 		namePlayer.setText(majority.createPopup(null));
@@ -49,7 +50,6 @@ public class TicTacToeController implements Initializable {
 				bt.setUserData(new Integer[] { i1, j1 });
 
 				bt.setOnAction(new EventHandler<ActionEvent>() {
-					@Override
 					public void handle(ActionEvent event) {
 
 						Button clickedButton = (Button) event.getTarget();
@@ -71,10 +71,6 @@ public class TicTacToeController implements Initializable {
 	}
 
 	private boolean start() {
-		 // BasicConfigurator.configure();
-
-		  	       // logger.debug("Hello World!");
-		//logger.info("dehfhsi");
 		return logic.start();
 	}
 
