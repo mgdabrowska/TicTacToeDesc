@@ -3,7 +3,11 @@ package pl.gosia.TicTacToeMaven;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javax.swing.text.StyledEditorKit.BoldAction;
+
 import org.apache.log4j.Logger;
+
+import javafx.application.Platform;
 
 //import org.apache.log4j.BasicConfigurator;
 
@@ -59,6 +63,7 @@ public class TicTacToeController implements Initializable {
 						clickedButton.setText(Mark.from(start()).toString());
 
 						logic.isWinning(clickedButton);
+
 					}
 				});
 
