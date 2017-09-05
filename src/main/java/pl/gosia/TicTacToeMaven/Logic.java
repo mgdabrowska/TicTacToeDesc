@@ -8,7 +8,16 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javafx.application.Platform;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
+import javafx.stage.Stage;
 
 public class Logic implements SolutionChecker {
 	private final static Logger logger = LoggerFactory.getLogger(Logic.class.getName());
@@ -47,13 +56,34 @@ public class Logic implements SolutionChecker {
 			if (position.containsAll(list)) {
 
 				logger.info("WIN " + clickedButton.getText());
+				showStage("WIN " + clickedButton.getText());
+
+				// System.exit(0);
 
 				return true;
 			}
 
-
 		}
 		return false;
 
+	}
+
+	public static void showStage(String info) {
+		Stage newStage = new Stage();
+		VBox comp = new VBox();
+		Label lb = new Label(info);
+		lb.setFont(new Font("Arial", 90));
+		lb.setMaxWidth(Double.MAX_VALUE);
+        lb.setAlignment(Pos.CENTER);
+
+		comp.getChildren().add(lb);
+
+		Scene stageScene = new Scene(comp, 350, 150);
+		newStage.setScene(stageScene);
+		newStage.show();
+		newStage.setOnCloseRequest(e -> {
+	        Platform.exit();
+	        System.exit(0);
+		});
 	}
 }
