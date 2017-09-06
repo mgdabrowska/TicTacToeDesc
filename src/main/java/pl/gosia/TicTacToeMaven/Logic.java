@@ -21,20 +21,20 @@ import javafx.stage.Stage;
 
 public class Logic implements SolutionChecker {
 	private final static Logger logger = LoggerFactory.getLogger(Logic.class.getName());
-	private List<List<List<Integer>>> winList = Arrays.asList(
-			Arrays.asList(Arrays.asList(0, 0), Arrays.asList(0, 1), Arrays.asList(0, 2)),
-			Arrays.asList(Arrays.asList(1, 0), Arrays.asList(1, 1), Arrays.asList(1, 2)),
-			Arrays.asList(Arrays.asList(2, 0), Arrays.asList(2, 1), Arrays.asList(2, 2)),
-			Arrays.asList(Arrays.asList(0, 0), Arrays.asList(1, 0), Arrays.asList(2, 0)),
-			Arrays.asList(Arrays.asList(0, 1), Arrays.asList(1, 1), Arrays.asList(2, 1)),
-			Arrays.asList(Arrays.asList(0, 2), Arrays.asList(1, 2), Arrays.asList(2, 2)),
-			Arrays.asList(Arrays.asList(0, 0), Arrays.asList(1, 1), Arrays.asList(2, 2)),
-			Arrays.asList(Arrays.asList(0, 2), Arrays.asList(1, 1), Arrays.asList(2, 0)));
+	private WinList winList = new WinList(
+			Arrays.asList(new WinLine(Arrays.asList(new Position(0, 0), new Position(0, 1), new Position(0, 2))),
+					new WinLine(Arrays.asList(new Position(1, 0), new Position(1, 1), new Position(1, 2))),
+					new WinLine(Arrays.asList(new Position(2, 0), new Position(2, 1), new Position(2, 2))),
+					new WinLine(Arrays.asList(new Position(0, 0), new Position(1, 0), new Position(2, 0))),
+					new WinLine(Arrays.asList(new Position(0, 1), new Position(1, 1), new Position(2, 1))),
+					new WinLine(Arrays.asList(new Position(0, 2), new Position(1, 2), new Position(2, 2))),
+					new WinLine(Arrays.asList(new Position(0, 0), new Position(1, 1), new Position(2, 2))),
+					new WinLine(Arrays.asList(new Position(0, 2), new Position(1, 1), new Position(2, 0)))));
 
-	private Set<List<Integer>> positionX = new HashSet<List<Integer>>();
-	private Set<List<Integer>> positionO = new HashSet<List<Integer>>();
+	private Set<Position> positionX = new HashSet<Position>();
+	private Set<Position> positionO = new HashSet<Position>();
 
-	public Set<List<Integer>> position(boolean start) {
+	public Set<Position> position(boolean start) {
 		return start ? positionX : positionO;
 	}
 
@@ -44,21 +44,20 @@ public class Logic implements SolutionChecker {
 
 	public boolean isWinning(Button clickedButton) {
 
-		Set<List<Integer>> position = position(start());
-		position.add(Arrays.asList((Integer[]) clickedButton.getUserData()));
+		Set<Position> position = position(start());
+		position.add((Position) clickedButton.getUserData());
+		// position.add(Arrays.asList((Integer[]) clickedButton.getUserData()));
 
 		logger.info("pozycja " + clickedButton.getText() + " " + position);
 		if (position.size() < 3) {
 			return false;
 		}
 
-		for (List<List<Integer>> list : winList) {
+		for (WinLine list : winList) {
 			if (position.containsAll(list)) {
 
 				logger.info("WIN " + clickedButton.getText());
-				showStage("WIN " + clickedButton.getText());
-
-				// System.exit(0);
+				TicTacToeController.showStage("WIN " + clickedButton.getText());
 
 				return true;
 			}
@@ -68,22 +67,4 @@ public class Logic implements SolutionChecker {
 
 	}
 
-	public static void showStage(String info) {
-		Stage newStage = new Stage();
-		VBox comp = new VBox();
-		Label lb = new Label(info);
-		lb.setFont(new Font("Arial", 90));
-		lb.setMaxWidth(Double.MAX_VALUE);
-        lb.setAlignment(Pos.CENTER);
-
-		comp.getChildren().add(lb);
-
-		Scene stageScene = new Scene(comp, 350, 150);
-		newStage.setScene(stageScene);
-		newStage.show();
-		newStage.setOnCloseRequest(e -> {
-	        Platform.exit();
-	        System.exit(0);
-		});
-	}
 }
