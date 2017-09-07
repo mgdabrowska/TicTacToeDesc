@@ -21,15 +21,7 @@ import javafx.stage.Stage;
 
 public class Logic implements SolutionChecker {
 	private final static Logger logger = LoggerFactory.getLogger(Logic.class.getName());
-	private WinList winList = new WinList(
-			Arrays.asList(new WinLine(Arrays.asList(new Position(0, 0), new Position(0, 1), new Position(0, 2))),
-					new WinLine(Arrays.asList(new Position(1, 0), new Position(1, 1), new Position(1, 2))),
-					new WinLine(Arrays.asList(new Position(2, 0), new Position(2, 1), new Position(2, 2))),
-					new WinLine(Arrays.asList(new Position(0, 0), new Position(1, 0), new Position(2, 0))),
-					new WinLine(Arrays.asList(new Position(0, 1), new Position(1, 1), new Position(2, 1))),
-					new WinLine(Arrays.asList(new Position(0, 2), new Position(1, 2), new Position(2, 2))),
-					new WinLine(Arrays.asList(new Position(0, 0), new Position(1, 1), new Position(2, 2))),
-					new WinLine(Arrays.asList(new Position(0, 2), new Position(1, 1), new Position(2, 0)))));
+	private WinList winList = new WinList();
 
 	private Set<Position> positionX = new HashSet<Position>();
 	private Set<Position> positionO = new HashSet<Position>();
@@ -46,7 +38,6 @@ public class Logic implements SolutionChecker {
 
 		Set<Position> position = position(start());
 		position.add((Position) clickedButton.getUserData());
-		// position.add(Arrays.asList((Integer[]) clickedButton.getUserData()));
 
 		logger.info("pozycja " + clickedButton.getText() + " " + position);
 		if (position.size() < 3) {
@@ -57,8 +48,6 @@ public class Logic implements SolutionChecker {
 			if (position.containsAll(list)) {
 
 				logger.info("WIN " + clickedButton.getText());
-				TicTacToeController.showStage("WIN " + clickedButton.getText());
-
 				return true;
 			}
 

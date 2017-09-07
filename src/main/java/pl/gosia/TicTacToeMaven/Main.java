@@ -18,10 +18,11 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("/pl/gosia/TicTacToeMaven/TicTacToe.fxml"));
+			AnchorPane root = (AnchorPane) FXMLLoader
+					.load(getClass().getResource("/pl/gosia/TicTacToeMaven/TicTacToe.fxml"));
 			Scene scene = new Scene(root, 600, 700);
 
-			//scene.getStylesheets().add(getClass().getResource("/pl/gosia/TicTacToeMaven/application.css").toExternalForm());
+			// scene.getStylesheets().add(getClass().getResource("/pl/gosia/TicTacToeMaven/application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setResizable(false);
 			primaryStage.show();

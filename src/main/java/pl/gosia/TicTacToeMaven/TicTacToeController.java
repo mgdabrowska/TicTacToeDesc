@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import javax.swing.text.StyledEditorKit.BoldAction;
 
 import org.apache.log4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javafx.application.Platform;
 
@@ -40,6 +41,7 @@ public class TicTacToeController implements Initializable {
 	private Label namePlayer;
 
 	private SolutionChecker logic = new Logic();
+	private boolean flaga = false;
 
 	public void initialize(URL location, ResourceBundle resources) {
 		Main majority = new Main();
@@ -66,8 +68,9 @@ public class TicTacToeController implements Initializable {
 						}
 						clickedButton.setText(Mark.from(start()).toString());
 
-						logic.isWinning(clickedButton);
-
+						if (logic.isWinning(clickedButton)) {
+							showStage("Win" + clickedButton.getText());
+						}
 					}
 				});
 
