@@ -1,26 +1,34 @@
 package pl.gosia.TicTacToeMaven;
 
+import javafx.geometry.Pos;
+import javafx.util.Builder;
+
 public class Position {
 
-	int x;
-	int y;
+	int row;
+	int column;
 
-	public Position(int x, int y) {
-		this.x = x;
-		this.y = y;
+	public Position(int row, int column) {
+		this.row = row;
+		this.column = column;
 	}
-
+//private Position(Builder builder) {
+	//this.row = builder.row;
+	//this.column = builder.column;
+//}
 	@Override
 	public String toString() {
-		return "[x=" + x + ", y=" + y + "]";
+		String s1 = String.format("%d", row);
+		String s2 = String.format("%d", column);
+		return "[" + s1 + ", " + s2 + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + x;
-		result = prime * result + y;
+		result = prime * result + row;
+		result = prime * result + column;
 		return result;
 	}
 
@@ -28,32 +36,37 @@ public class Position {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
 		Position other = (Position) obj;
-		if (x != other.x)
-			return false;
-		if (y != other.y)
-			return false;
-		return true;
+		return (!(obj instanceof Position)) || Double.compare(row, other.row) == 0 && Double.compare(column, other.column) == 0;
 	}
 
 	public int getX() {
-		return x;
-	}
-
-	public void setX(int x) {
-		this.x = x;
+		return row;
 	}
 
 	public int getY() {
-		return y;
+		return column;
 	}
 
-	public void setY(int y) {
-		this.y = y;
+
+	//public static class Builder {
+	//	private int row;
+	//	 private int column;
+	//	 private Position position = new Position();
+
+	/*public Builder row( int row){
+		position.row = row;
+		return this;
 	}
+	public Builder column( int column){
+		position.column = column;
+		return this;
+	}
+	 public Position build() {
+		 return position;
+	 }*/
+
+	//}
+
 
 }

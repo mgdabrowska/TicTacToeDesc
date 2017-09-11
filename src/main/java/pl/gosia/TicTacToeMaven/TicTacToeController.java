@@ -2,18 +2,7 @@ package pl.gosia.TicTacToeMaven;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import javax.swing.text.StyledEditorKit.BoldAction;
-
-import org.apache.log4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import javafx.application.Platform;
-
-//import org.apache.log4j.BasicConfigurator;
-
-//import com.sun.media.jfxmedia.logging.Logger;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -41,7 +30,6 @@ public class TicTacToeController implements Initializable {
 	private Label namePlayer;
 
 	private SolutionChecker logic = new Logic();
-	private boolean flaga = false;
 
 	public void initialize(URL location, ResourceBundle resources) {
 		Main majority = new Main();

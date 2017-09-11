@@ -1,6 +1,9 @@
 package pl.gosia.TicTacToeMaven;
 
 import java.util.Optional;
+
+import org.apache.log4j.BasicConfigurator;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -19,10 +22,10 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			AnchorPane root = (AnchorPane) FXMLLoader
-					.load(getClass().getResource("/pl/gosia/TicTacToeMaven/TicTacToe.fxml"));
+					.load(getClass().getClassLoader().getResource("TicTacToe.fxml"));
 			Scene scene = new Scene(root, 600, 700);
 
-			// scene.getStylesheets().add(getClass().getResource("/pl/gosia/TicTacToeMaven/application.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setResizable(false);
 			primaryStage.show();
