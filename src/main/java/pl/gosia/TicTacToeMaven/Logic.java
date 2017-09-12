@@ -12,7 +12,7 @@ import javafx.scene.control.Button;
 
 public class Logic implements SolutionChecker {
 	private final static Logger logger = LoggerFactory.getLogger(Logic.class.getName());
-	private WinList winList = new WinList();
+	private WinList winList = new WinList(3);
 
 	private Set<Position> positionX = new HashSet<Position>();
 	private Set<Position> positionO = new HashSet<Position>();

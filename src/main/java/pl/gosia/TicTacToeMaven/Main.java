@@ -1,9 +1,6 @@
 package pl.gosia.TicTacToeMaven;
 
 import java.util.Optional;
-
-import org.apache.log4j.BasicConfigurator;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -21,8 +18,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			AnchorPane root = (AnchorPane) FXMLLoader
-					.load(getClass().getClassLoader().getResource("TicTacToe.fxml"));
+			AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("/TicTacToe.fxml"));
 			Scene scene = new Scene(root, 600, 700);
 
 			scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());

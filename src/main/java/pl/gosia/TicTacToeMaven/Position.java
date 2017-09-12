@@ -1,21 +1,15 @@
 package pl.gosia.TicTacToeMaven;
 
-import javafx.geometry.Pos;
-import javafx.util.Builder;
-
 public class Position {
 
 	int row;
 	int column;
 
-	public Position(int row, int column) {
+	private Position(int row, int column) {
 		this.row = row;
 		this.column = column;
 	}
-//private Position(Builder builder) {
-	//this.row = builder.row;
-	//this.column = builder.column;
-//}
+
 	@Override
 	public String toString() {
 		String s1 = String.format("%d", row);
@@ -37,7 +31,8 @@ public class Position {
 		if (this == obj)
 			return true;
 		Position other = (Position) obj;
-		return (!(obj instanceof Position)) || Double.compare(row, other.row) == 0 && Double.compare(column, other.column) == 0;
+		return (!(obj instanceof Position))
+				|| Double.compare(row, other.row) == 0 && Double.compare(column, other.column) == 0;
 	}
 
 	public int getX() {
@@ -48,25 +43,31 @@ public class Position {
 		return column;
 	}
 
-
-	//public static class Builder {
-	//	private int row;
-	//	 private int column;
-	//	 private Position position = new Position();
-
-	/*public Builder row( int row){
-		position.row = row;
-		return this;
+	public static Builder create() {
+		return new Builder();
 	}
-	public Builder column( int column){
-		position.column = column;
-		return this;
+
+	public static class Builder {
+		private int row;
+		private int column;
+
+		private Builder() {
+		}
+
+		public Builder row(int row) {
+			this.row = row;
+			return this;
+		}
+
+		public Builder column(int column) {
+			this.column = column;
+			return this;
+		}
+
+		public Position build() {
+			return new Position(row, column);
+		}
+
 	}
-	 public Position build() {
-		 return position;
-	 }*/
-
-	//}
-
 
 }

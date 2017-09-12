@@ -1,5 +1,4 @@
 package pl.gosia.TicTacToeMaven;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
@@ -15,7 +14,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import pl.gosia.TicTacToeMaven.Mark;
 
 public class TicTacToeController implements Initializable {
 
@@ -45,11 +43,9 @@ public class TicTacToeController implements Initializable {
 				bt.setFont(new Font(_sizeFont));
 				final int i1 = i;
 				final int j1 = j;
-				bt.setUserData(new Position(i1, j1));
-
+				bt.setUserData(Position.create().row(i1).column(j1).build());
 				bt.setOnAction(new EventHandler<ActionEvent>() {
 					public void handle(ActionEvent event) {
-
 						Button clickedButton = (Button) event.getTarget();
 						if (!"".equals(clickedButton.getText())) {
 							return;
