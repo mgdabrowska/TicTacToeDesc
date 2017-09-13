@@ -6,7 +6,7 @@ import java.util.List;
 public class WinLine extends ArrayList<Position> {
 
 	public WinLine(List<Position> list) {
-
+		super(list);
 	}
 
 	private WinLine() {
@@ -30,10 +30,7 @@ public class WinLine extends ArrayList<Position> {
 		}
 
 		public void position(Position build) {
-
-			for (Position position : list) {
-				this.list.add(position);
-			}
+			list.add(build);
 
 		}
 

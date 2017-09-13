@@ -1,6 +1,5 @@
 package pl.gosia.TicTacToeMaven;
 
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,10 +8,10 @@ import org.slf4j.LoggerFactory;
 
 import javafx.scene.control.Button;
 
-
 public class Logic implements SolutionChecker {
+	private static final int size = 3;
 	private final static Logger logger = LoggerFactory.getLogger(Logic.class.getName());
-	private WinList winList = new WinList(3);
+	private WinList winList = new WinList(size);
 
 	private Set<Position> positionX = new HashSet<Position>();
 	private Set<Position> positionO = new HashSet<Position>();
@@ -31,13 +30,13 @@ public class Logic implements SolutionChecker {
 		position.add((Position) clickedButton.getUserData());
 
 		logger.info("pozycja " + clickedButton.getText() + " " + position);
-		if (position.size() < 3) {
+		if (position.size() < size) {
 			return false;
 		}
 
 		for (WinLine list : winList) {
+			logger.info(" pozycja" + position);
 			if (position.containsAll(list)) {
-
 				logger.info("WIN " + clickedButton.getText());
 				return true;
 			}

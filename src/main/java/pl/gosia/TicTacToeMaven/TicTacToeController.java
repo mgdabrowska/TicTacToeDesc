@@ -1,4 +1,5 @@
 package pl.gosia.TicTacToeMaven;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
@@ -17,6 +18,8 @@ import javafx.stage.Stage;
 
 public class TicTacToeController implements Initializable {
 
+	private static final int sizeTable = 3;
+
 	private static final int _sizeFont = 50;
 
 	private static final int size = 200;
@@ -33,17 +36,17 @@ public class TicTacToeController implements Initializable {
 		Main majority = new Main();
 		namePlayer.setText(majority.createPopup(null));
 
-		for (int i = 0; i < 3; i++) {
+		for (int row = 0; row < sizeTable; row++) {
 
-			for (int j = 0; j < 3; j++) {
+			for (int column = 0; column < sizeTable; column++) {
 
 				Button bt = new Button("");
 				bt.setMinSize(size, size);
 				bt.setMaxSize(size, size);
 				bt.setFont(new Font(_sizeFont));
-				final int i1 = i;
-				final int j1 = j;
-				bt.setUserData(Position.create().row(i1).column(j1).build());
+				final int i = row;
+				final int j = column;
+				bt.setUserData(Position.create().row(i).column(j).build());
 				bt.setOnAction(new EventHandler<ActionEvent>() {
 					public void handle(ActionEvent event) {
 						Button clickedButton = (Button) event.getTarget();
@@ -58,7 +61,7 @@ public class TicTacToeController implements Initializable {
 					}
 				});
 
-				TicTacToeGrid.add(bt, j, i);
+				TicTacToeGrid.add(bt, column, row);
 
 			}
 

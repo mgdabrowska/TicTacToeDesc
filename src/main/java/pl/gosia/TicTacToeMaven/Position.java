@@ -5,7 +5,7 @@ public class Position {
 	int row;
 	int column;
 
-	private Position(int row, int column) {
+	public Position(int row, int column) {
 		this.row = row;
 		this.column = column;
 	}
@@ -32,7 +32,7 @@ public class Position {
 			return true;
 		Position other = (Position) obj;
 		return (!(obj instanceof Position))
-				|| Double.compare(row, other.row) == 0 && Double.compare(column, other.column) == 0;
+				|| (Double.compare(row, other.row) == 0 && Double.compare(column, other.column) == 0);
 	}
 
 	public int getX() {
