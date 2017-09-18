@@ -10,6 +10,7 @@ import javafx.scene.layout.AnchorPane;
 
 public class Main extends Application {
 
+	private static final String TIC_TAC_TOE_FXML = "/TicTacToe.fxml";
 	private static final String Title = "Please enter your name:";
 	private static final String Header = "Choose player";
 	private static final String Content = "Text Input Dialog";
@@ -18,7 +19,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("/TicTacToe.fxml"));
+			AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource(TIC_TAC_TOE_FXML));
 			Scene scene = new Scene(root, 600, 700);
 
 			scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());

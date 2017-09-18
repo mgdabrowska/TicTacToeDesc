@@ -9,9 +9,9 @@ import org.slf4j.LoggerFactory;
 import javafx.scene.control.Button;
 
 public class Logic implements SolutionChecker {
-	private static final int size = 3;
+	private static final int SIZE = 4;
 	private final static Logger logger = LoggerFactory.getLogger(Logic.class.getName());
-	private WinList winList = new WinList(size);
+	private WinList winList = new WinList(SIZE);
 
 	private Set<Position> positionX = new HashSet<Position>();
 	private Set<Position> positionO = new HashSet<Position>();
@@ -30,7 +30,7 @@ public class Logic implements SolutionChecker {
 		position.add((Position) clickedButton.getUserData());
 
 		logger.info("pozycja " + clickedButton.getText() + " " + position);
-		if (position.size() < size) {
+		if (position.size() < SIZE) {
 			return false;
 		}
 
