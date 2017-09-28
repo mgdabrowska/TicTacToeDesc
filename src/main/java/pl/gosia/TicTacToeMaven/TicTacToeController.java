@@ -17,13 +17,13 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class TicTacToeController implements Initializable {
-	private static final int SIZE_TABLE = 4;
+	public static final int SIZE_TABLE = 3;
 
 	@FXML
 	public GridPane TicTacToeGrid;
 	@FXML
 	public Label namePlayer;
-
+	private static SolutionChecker logic = new WinListSolutionChecker();
 
 	public void initialize(URL location, ResourceBundle resources) {
 		Main majority = new Main();
@@ -33,8 +33,24 @@ public class TicTacToeController implements Initializable {
 
 			for (int column = 0; column < SIZE_TABLE; column++) {
 
-				Button bt = CreateButton.createButton(row, column);
+				Button bt = PropertiesOfButton.createButton();
+				
+				
+				
+				bt.setUserData(Position.create().row(row).column(column).build());
+				bt.setOnAction(new EventHandler<ActionEvent>() {
+					public void handle(ActionEvent event) {
+						Button clickedButton = (Button) event.getTarget();
+						if (!"".equals(clickedButton.getText())) {
+							return;
+						}
+						clickedButton.setText(Mark.from(start()).toString());
 
+						if (logic.isWinning(clickedButton)) {
+							TicTacToeController.showStage("Win" + clickedButton.getText());
+						}
+					}
+				});
 				TicTacToeGrid.add(bt, column, row);
 
 			}
@@ -61,5 +77,7 @@ public class TicTacToeController implements Initializable {
 			System.exit(0);
 		});
 	}
-
+	private static boolean start() {
+		return logic.start();
+	}
 }

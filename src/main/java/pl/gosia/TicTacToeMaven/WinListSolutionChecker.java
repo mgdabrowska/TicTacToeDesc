@@ -8,9 +8,9 @@ import org.slf4j.LoggerFactory;
 
 import javafx.scene.control.Button;
 
-public class Logic implements SolutionChecker {
-	private static final int SIZE = 4;
-	private final static Logger logger = LoggerFactory.getLogger(Logic.class.getName());
+public class WinListSolutionChecker implements SolutionChecker {
+	private static final int SIZE = 3;
+	private final static Logger logger = LoggerFactory.getLogger(WinListSolutionChecker.class.getName());
 	private WinList winList = new WinList(SIZE);
 
 	private Set<Position> positionX = new HashSet<Position>();

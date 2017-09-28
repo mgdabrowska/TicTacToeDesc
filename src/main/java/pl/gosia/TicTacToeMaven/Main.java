@@ -11,10 +11,10 @@ import javafx.scene.layout.AnchorPane;
 public class Main extends Application {
 
 	private static final String TIC_TAC_TOE_FXML = "/TicTacToe.fxml";
-	private static final String Title = "Please enter your name:";
-	private static final String Header = "Choose player";
-	private static final String Content = "Text Input Dialog";
-	public String nazwa = "Gosia";
+	private static final String TITLE = "Please enter your name:";
+	private static final String HEADER = "Choose player";
+	private static final String CONTENT = "Text Input Dialog";
+	public String DEFAULT_USER = "Gosia";
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -37,18 +37,18 @@ public class Main extends Application {
 		try {
 			TextInputDialog dialog = new TextInputDialog("Gosia");
 
-			dialog.setTitle(Title);
-			dialog.setHeaderText(Header);
-			dialog.setContentText(Content);
+			dialog.setTitle(TITLE);
+			dialog.setHeaderText(HEADER);
+			dialog.setContentText(CONTENT);
 			Optional<String> result = dialog.showAndWait();
 			if (result.isPresent())
-				nazwa = result.get();
+				DEFAULT_USER = result.get();
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return nazwa;
+		return DEFAULT_USER;
 	}
 
 	public static void main(String[] args) {
